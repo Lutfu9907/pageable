@@ -8,12 +8,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lutfudolay.controller.IRestPersonelController;
 import com.lutfudolay.model.Personel;
 import com.lutfudolay.service.IPersonelService;
+import com.lutfudolay.utils.RestPageableRequest;
 
 @RestController
 @RequestMapping("/rest/api/personel")
@@ -24,11 +24,11 @@ public class RestPersonelControllerImpl implements IRestPersonelController{
 	
 	@GetMapping("/list/pageable")
 	@Override
-	public Page<Personel> findAllPageable(@RequestParam(value = "pageNumber") int pageNumber,
-										  @RequestParam(value = "pageSize") int pageSize) {
+	public Page<Personel> findAllPageable(RestPageableRequest pageable) {
 		
-		Pageable pageable = PageRequest.of(pageNumber, pageSize,Sort.by(Direction.DESC,"id"));
+		Pageable pageableReq = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+				Sort.by(Direction.DESC,"id"));
 		
-		return personelService.findAllPageable(pageable);
+		return personelService.findAllPageable(pageableReq);
 	}
 }
