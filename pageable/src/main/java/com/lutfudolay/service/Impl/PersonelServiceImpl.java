@@ -36,7 +36,7 @@ public class PersonelServiceImpl implements IPersonelService {
 			DtoPersonel dtoPersonel = new DtoPersonel();
 			DtoDepartment dtoDepartment = new DtoDepartment();
 			
-			BeanUtils.copyProperties(personel, personelList);
+			BeanUtils.copyProperties(personel, dtoPersonel);
 			BeanUtils.copyProperties(personel.getDepartment(), dtoDepartment);
 			
 			dtoPersonel.setDepartment(dtoDepartment);

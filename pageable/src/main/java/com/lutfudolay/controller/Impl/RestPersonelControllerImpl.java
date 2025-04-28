@@ -12,6 +12,7 @@ import com.lutfudolay.model.Personel;
 import com.lutfudolay.service.IPersonelService;
 import com.lutfudolay.utils.RestPageableEntity;
 import com.lutfudolay.utils.RestPageableRequest;
+import com.lutfudolay.utils.RestRootEntity;
 
 @RestController
 @RequestMapping("/rest/api/personel")
@@ -22,11 +23,11 @@ public class RestPersonelControllerImpl extends RestBaseController implements IR
 	
 	@GetMapping("/list/pageable")
 	@Override
-	public  RestPageableEntity<DtoPersonel> findAllPageable(RestPageableRequest pageable) {
+	public  RestRootEntity<RestPageableEntity<DtoPersonel>> findAllPageable(RestPageableRequest pageable) {
 		
 		 Page<Personel> page = personelService.findAllPageable(toPageable(pageable));
 		 RestPageableEntity<DtoPersonel> pageableResponse = toPageableResponse(page,personelService.toDTOList(page.getContent()));
 		 
-		 return pageableResponse;
+		 return ok(pageableResponse);
 	}
 }
