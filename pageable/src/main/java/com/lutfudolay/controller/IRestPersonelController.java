@@ -1,11 +1,10 @@
 package com.lutfudolay.controller;
 
-import org.springframework.data.domain.Page;
-
-import com.lutfudolay.model.Personel;
+import com.lutfudolay.dto.DtoPersonel;
+import com.lutfudolay.utils.RestPageableEntity;
 import com.lutfudolay.utils.RestPageableRequest;
 
 public interface IRestPersonelController {
 
-	Page<Personel> findAllPageable(RestPageableRequest pageableRequest);
+	public RestPageableEntity<DtoPersonel> findAllPageable(RestPageableRequest pageableRequest);
 }
