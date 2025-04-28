@@ -10,7 +10,7 @@ import com.lutfudolay.utils.RestPageableEntity;
 import com.lutfudolay.utils.RestPageableRequest;
 import com.lutfudolay.utils.RestRootEntity;
 
-public class RestBaseController {
+public class RestBaseController { //backend cevaplarının her zaman aynı standart yapıda olmasını sağladık (status, payload, errorMessage).
 
 	public Pageable toPageable(RestPageableRequest request) {
 		return	PagerUtil.toPageable(request);

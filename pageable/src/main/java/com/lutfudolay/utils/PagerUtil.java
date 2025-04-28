@@ -12,7 +12,7 @@ import org.springframework.data.domain.Sort.Direction;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class PagerUtil {
+public class PagerUtil { // kullanıcının gönderdiği "kaçıncı sayfa, kaç veri, hangi sütuna göre sıralansın" gibi bilgileri aldık ve Pageable nesnesine dönüştürdük.
 	
 	public boolean isNullOrEmpty(String value) {
 		return value == null || value.trim().length()==0;
@@ -28,7 +28,7 @@ public class PagerUtil {
 		return PageRequest.of(request.getPageNumber(),request.getPageSize());
 	}
 	
-	public <T> RestPageableEntity<T> toPageableResponse(Page<?> page, List<T> content) {
+	public <T> RestPageableEntity<T> toPageableResponse(Page<?> page, List<T> content) {//sayfa bilgilerini de (pageNumber, pageSize, totalElements) frontend'e gönderecek bir yapı kurduk
 		RestPageableEntity<T> pageableEntity = new RestPageableEntity<T>();
 		pageableEntity.setContent(content);
 		pageableEntity.setPageNumber(page.getPageable().getPageNumber());

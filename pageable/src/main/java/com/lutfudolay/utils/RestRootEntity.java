@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RestRootEntity <T>{
+public class RestRootEntity <T>{//backend cevaplarının her zaman aynı standart yapıda olmasını sağladık (status, payload, errorMessage).
 
 	private Integer status;
 	

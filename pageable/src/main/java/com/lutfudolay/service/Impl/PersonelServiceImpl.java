@@ -17,7 +17,9 @@ import com.lutfudolay.service.IPersonelService;
 
 @Service
 public class PersonelServiceImpl implements IPersonelService {
-
+ 
+	//PersonelServiceImpl içerisinde, veritabanından çektiğimiz Personel nesnelerini DTO'ya (yani frontend'e daha temiz veri gönderilecek bir yapıya) dönüştürdük.
+	
 	@Autowired
 	private PersonelRepository personelRepository;
 	
